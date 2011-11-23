@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'frontend/base'
+    = javascript_include_tag "frontend/base", :cache => true
+    = csrf_meta_tag
+    = yield :head
+  %body
+    = yield

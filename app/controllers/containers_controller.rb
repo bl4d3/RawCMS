@@ -1,25 +1,41 @@
 class ContainersController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :except => [:index, :show]
   layout 'admin'
   # GET /containers
   # GET /containers.json
   def index
     @containers = Container.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @containers }
+    unless admin_signed_in?
+      @container = Container.where(:place_holder => "home").first
+      render :template => "frontend/default", :layout => "frontend/layouts/default"
+    else
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render :json => @containers }
+      end
     end
   end
 
   # GET /containers/1
   # GET /containers/1.json
   def show
-    @container = Container.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @container }
+    if params[:id].blank?
+      @container = Container.where(:place_holder => "home").first
+    else
+      @container = Container.find(params[:id])
+    end
+    if admin_signed_in?
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render :json => @container }
+      end
+    else
+      if params[:id].blank?
+        render :template => "frontend/default", :layout => "frontend/layouts/default"
+      else
+        render :template => "pages/default", :layout => "layouts/application"
+      end
     end
   end
 
