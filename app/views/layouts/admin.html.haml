@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title= APP_NAME
+    = stylesheet_link_tag 'web_app_theme'
+    = javascript_include_tag :admin, :cache => true
+    = csrf_meta_tag
+    = yield :head
+  %body
+    #doing_op
+    #container
+      #header
+        %h1
+          %a{:href => "/"}= APP_NAME
+        #user-navigation
+          %ul.wat-cf
+            %li= link_to t(:containers), containers_path
+            %li= link_to t(:places), places_path
+            %li= link_to t(:positions), positions_path
+            %li.logout= link_to "Logout", destroy_admin_session_path, :method => :delete, :class => "logout"
+        #main-navigation
+          %ul.wat-cf
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            %div{:class => "message #{type}"}
+              %p= message
+        #main
+          = yield
+          #footer
+            .block
+              %p
+                Copyright &copy; #{Time.now.year} #{APP_NAME}
+        #sidebar
+          = yield :sidebar

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  container_id: 1
+  place_id: 1
+
+two:
+  container_id: 1
+  place_id: 1
