@@ -1,4 +1,10 @@
 RawCms::Application.routes.draw do
+  resources :portfolios
+
+  resources :categories
+
+  resources :posts
+
   devise_for :admins
 
   resources :places

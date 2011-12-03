@@ -12,12 +12,7 @@
       #header
         %h1
           %a{:href => "/"}= APP_NAME
-        #user-navigation
-          %ul.wat-cf
-            %li= link_to t(:containers), containers_path
-            %li= link_to t(:places), places_path
-            %li= link_to t(:positions), positions_path
-            %li.logout= link_to "Logout", destroy_admin_session_path, :method => :delete, :class => "logout"
+        = render :partial => "backend/menu"
         #main-navigation
           %ul.wat-cf
       #wrapper.wat-cf

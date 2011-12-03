@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123132945) do
+ActiveRecord::Schema.define(:version => 20111203175054) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20111123132945) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "containers", :force => true do |t|
     t.string   "name"
     t.string   "sub_title"
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20111123132945) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "admin_id"
   end
 
   create_table "places", :force => true do |t|
@@ -54,9 +63,34 @@ ActiveRecord::Schema.define(:version => 20111123132945) do
     t.datetime "updated_at"
   end
 
+  create_table "portfolios", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "skill"
+    t.integer  "order_show"
+    t.integer  "admin_id"
+    t.boolean  "is_public"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "positions", :force => true do |t|
     t.integer  "container_id"
     t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "short_description"
+    t.text     "description"
+    t.boolean  "is_public"
+    t.integer  "category_id"
+    t.integer  "admin_id"
+    t.string   "tag_keyword"
+    t.text     "text_description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

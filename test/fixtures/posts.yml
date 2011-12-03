@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  short_description: MyText
+  description: MyText
+  is_public: false
+  category_id: 1
+  user_id: 1
+  tag_keyword: MyString
+  text_description: MyText
+
+two:
+  title: MyString
+  short_description: MyText
+  description: MyText
+  is_public: false
+  category_id: 1
+  user_id: 1
+  tag_keyword: MyString
+  text_description: MyText

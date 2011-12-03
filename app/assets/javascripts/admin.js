@@ -8,6 +8,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require tinymce-jquery
+//= jqsimplemenu
 //= require_tree .
 
 $(document).ready(function() {
@@ -31,6 +32,8 @@ $(document).ready(function() {
 			}
 		});
 	}
+	if ($('.menu').length > 0){$('.menu').jqsimplemenu();}
+	
 });
 
 function hideEl(id){

@@ -1,0 +1,47 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", portfolios_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_portfolio_path
+      %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", portfolio_path
+  .content
+    .inner
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.name", :default => t("activerecord.labels.name", :default => "Name"))
+          \:
+        = @portfolio.name
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.description", :default => t("activerecord.labels.description", :default => "Description"))
+          \:
+        = @portfolio.description
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.skill", :default => t("activerecord.labels.skill", :default => "Skill"))
+          \:
+        = @portfolio.skill
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.order_show", :default => t("activerecord.labels.order_show", :default => "Order show"))
+          \:
+        = @portfolio.order_show
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.user_id", :default => t("activerecord.labels.user_id", :default => "User"))
+          \:
+        = @portfolio.admin.email
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.is_public", :default => t("activerecord.labels.is_public", :default => "Is public"))
+          \:
+        = @portfolio.is_public
+      %p
+        %b
+          = t("activerecord.attributes.portfolio.link", :default => t("activerecord.labels.link", :default => "Link"))
+          \:
+        = @portfolio.link
+      .wat-cf
+        = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_portfolio_path(@portfolio), :class => "button"
+        = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), portfolio_path(@portfolio), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+- content_for :sidebar, render(:partial => 'sidebar')

@@ -1,0 +1,20 @@
+%ul.menu
+  %li
+    %a{:href => "#"}= t(:web_site)
+    %ul
+      %li= link_to t(:containers), containers_path
+      %li= link_to t(:places), places_path
+      %li= link_to t(:positions), positions_path
+  %li
+    %a{:href => "#"}= t(:blog)
+    %ul
+      %li= link_to t(:posts), posts_path
+      %li= link_to t(:new_post), new_post_path
+      %li= link_to t(:categories), categories_path
+      %li= link_to t(:new_category), new_category_path
+  %li
+    %a{:href => "#"}= t(:portfolio)
+    %ul
+      %li= link_to t(:jobs), portfolios_path
+      %li= link_to t(:new_job), new_portfolio_path
+  %li=link_to "Logout", destroy_admin_session_path, :method => :delete

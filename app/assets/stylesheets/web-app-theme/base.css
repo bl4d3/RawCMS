@@ -437,3 +437,11 @@ button.button:active, a.button:active {
 .login .flash .alert p{
 	color:red !important;
 }
+
+.menu{
+	position:relative;
+	top:35px;
+	left:20px;
+}
+
+.menu li a{color:#ffffff;} 
